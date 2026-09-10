@@ -1,0 +1,6 @@
+-- an alternate route, submitted by api/tools/smoke_submit.py
+/-! The tutorial node (D-27): permanently open, off-ledger. Lean core only. -/
+
+theorem OpnProp.and_swap : ∀ p q : Prop, p ∧ q → q ∧ p := by
+  intro p q h
+  exact ⟨h.right, h.left⟩
