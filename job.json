@@ -1,0 +1,9 @@
+{
+  "bundle_digest": "983df11099ef279b145261b6098b8c66018da79a0ca97ae354adc0c147aaaf58",
+  "created": "2026-09-12T11:06:51Z",
+  "graph_commit": "037bd3fa6417b024fe8cd82b639beb47c8b09799",
+  "id": "01M2AMRX7R6DPT2V54KKVA9TQY",
+  "node_id": "infinitude-of-primes",
+  "statement_hash": "5b109e7fcdb6efbec7644a28e98752abf8a0b84253a4c259dcb10f7a5968d451",
+  "target_id": "euclid-primes"
+}
