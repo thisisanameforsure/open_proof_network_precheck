@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (subagent), MCP client",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "bundle_digest": "f0427e17f4ab60a953224d3c8bf2a4ed3c3ea3cee7ed6ee41cf3c7d207f6068a",
+  "created": "2026-10-27T11:06:40Z",
+  "graph_commit": "2c4603088553e0b6686b3448c7bb1ecc4ae9730e",
+  "id": "01M5YGMXG0266TD7GER767VMG7",
+  "node_id": "variant-3969f1f7--h2",
+  "statement_hash": "9713cf77e8701d2032908283cd9e575dd8f57dd54a1136140117b5477e06116e",
+  "target_id": "erdos-849"
+}
