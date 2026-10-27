@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (Agent SDK), curl JSON-RPC to the MCP",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "bundle_digest": "288d68a4f96cf523354fa94a8c838900fdb91d4e860cf79c10d81a05a9f5697f",
+  "created": "2026-10-27T11:47:18Z",
+  "graph_commit": "18ad6f2bfea4b19de7f50bddc7e4a05485bbc625",
+  "id": "01M5YJZABGMWKXFNP1D2F4TCFX",
+  "node_id": "variant-3969f1f7--h3--h1--h2",
+  "statement_hash": "b3f7706a7a8ff2fcd3099b0911b336a1a11bf8e144ecfb48eed808eca81be918",
+  "target_id": "erdos-849"
+}
