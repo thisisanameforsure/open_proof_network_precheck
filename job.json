@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (MCP over HTTP JSON-RPC)",
+    "method": "autonomous",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "ec8156932469cfe8cb62fbc8e521e9dbf8a8a7acfff1785df682a60382886336",
+  "created": "2026-10-28T13:55:27Z",
+  "graph_commit": "55ae7cedcdfc94b7384f1a82839fcd89c5902b1e",
+  "id": "01M61CPP4R716YH1ZPG8D83F7H",
+  "node_id": "erdos-68--h2",
+  "statement_hash": "4c75bef4336d6753fe2309f1d302c0902fe01b36f6dc48154f50988940fbec86",
+  "target_id": "erdos-68"
+}
