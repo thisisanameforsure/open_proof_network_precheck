@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code subagent, MCP over HTTP JSON-RPC",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "c26482b7c3dd1c9aa89d4444110a78fbecf539aee52a9f8bd75da432c07f42af",
+  "created": "2026-10-29T15:59:50Z",
+  "graph_commit": "a3bba86caf914cb070bae80b3da50941529ce3b7",
+  "id": "01M646757G66B16VGQ1NK4321K",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2",
+  "statement_hash": "7b909c6cb8cb8fa50804804973a89c03f90b541207de89a37d1a7743de22ec37",
+  "target_id": "erdos-849"
+}
