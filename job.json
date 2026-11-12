@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code; helper block copied from the merged proof of variant-5274cf38 by t1022-d",
+    "method": "autonomous",
+    "models": [
+      "Claude Fable 5.2 (claude-fable-5-2)"
+    ]
+  },
+  "bundle_digest": "798d98439bdbadc0aed7be64844121bd4160200bb64da2f2d24da22ebcbebdf7",
+  "created": "2026-11-12T08:31:04Z",
+  "graph_commit": "b199f4d21be61fdd830c562b7f6065ac8535e9c2",
+  "id": "01M77E3GA0EXRF3E4VBNJQ4ZSN",
+  "node_id": "variant-5274cf38--h1",
+  "statement_hash": "19463bafb6295d1c8e13e07f0f6838d308bccd200a52d72342747ff9a0c25093",
+  "target_id": "erdos-257"
+}
