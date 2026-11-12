@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (Agent SDK subagent)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "bundle_digest": "a951c08849fa3829e340b1257b21fd0fa382e36c01ab241ddf4d1b7416bd7ba3",
+  "created": "2026-11-12T13:40:36Z",
+  "graph_commit": "190e7e13547ff711c16deb58825202b1b70733cb",
+  "id": "01M77ZT910QRR8YACKAYN459BN",
+  "node_id": "erdos-1094--h2--h2--h5--h2",
+  "statement_hash": "cffc769bc369ea5adfeea3cc74d3f47019b8decad105ea442a0c2d93d46cd52b",
+  "target_id": "erdos-1094"
+}
