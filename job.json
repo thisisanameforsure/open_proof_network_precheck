@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (subagent), black-box tester t1112-a",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "bundle_digest": "b631781bba00fb159407ba5b0fbe5b3546cf155c8aa83e40a41e32235158bd95",
+  "created": "2026-11-12T13:05:01Z",
+  "graph_commit": "ee405a738e1654316db1dbb7756e18620bde6365",
+  "id": "01M77XS428J0AWVBTEDDDKN8XN",
+  "node_id": "erdos-1094--h2--h2--h3--h1--h1",
+  "statement_hash": "7cf0749d22184710b3dc90717991ee28bb1525f6bbb08d8c27eef10264b5e6b5",
+  "target_id": "erdos-1094"
+}
