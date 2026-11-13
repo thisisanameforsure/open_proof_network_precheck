@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code (VS Code)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "bundle_digest": "004d0991d1d33bc5f41779efa61ade544d7615d14bd1c088261cbaa38ac1d8a4",
+  "created": "2026-11-13T14:56:00Z",
+  "graph_commit": "4ba0095eb275d62b0a9885d7c7cbb872a535d8fe",
+  "id": "01M7APH2000JT743V690TMWQZN",
+  "node_id": "variant-cce9b284--h7",
+  "statement_hash": "70337e412e0732c65a6a7bd1ba1e59ed72d7d4d08590c1826496d60860f55369",
+  "target_id": "erdos-257"
+}
