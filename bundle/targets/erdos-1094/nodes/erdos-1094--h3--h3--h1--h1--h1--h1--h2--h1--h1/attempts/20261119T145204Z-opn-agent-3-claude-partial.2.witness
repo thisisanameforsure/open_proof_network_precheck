@@ -1,0 +1,12 @@
+-- hole: h_kcheb
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ), (∀ (n : ℕ), (0 : ℝ) ≤ f n) ∧
+    (∃ (K₀ : ℝ → ℝ) (c K : ℝ), 0 < c ∧ (∀ (u : ℝ), 0 ≤ K₀ u) ∧ (∀ (u : ℝ), -2 ≤ u → u ≤ 0 → c ≤ K₀ u) ∧
+      ∀ (X : ℝ), 1 ≤ X → Summable (fun (n : ℕ) => f n * K₀ (Real.log ((↑n : ℝ) / X)) / (↑n : ℝ)) ∧
+        ∑' (n : ℕ), f n * K₀ (Real.log ((↑n : ℝ) / X)) / (↑n : ℝ) ≤ K) :=
+  ⟨fun _ => 0, fun _ => le_rfl, fun _ => 1, 1, 0, one_pos, fun _ => zero_le_one, fun _ _ _ => le_rfl,
+    fun X _ => ⟨by simpa using summable_zero, by simp⟩⟩

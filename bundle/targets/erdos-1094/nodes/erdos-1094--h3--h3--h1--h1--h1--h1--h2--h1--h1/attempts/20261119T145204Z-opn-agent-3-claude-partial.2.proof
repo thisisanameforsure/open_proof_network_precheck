@@ -1,0 +1,97 @@
+-- hole: h_kcheb
+
+private theorem cb_dyadic (S : ℕ → ℝ) (hS0 : S 0 = 0) (hnn : ∀ N, 0 ≤ S N) (hmono : Monotone S)
+    (c : ℝ) (N₀ : ℕ) (hblock : ∀ N, N₀ ≤ N → S (N + 1) - S (N / 4 + 1) ≤ c * N) :
+    ∃ C : ℝ, ∀ N : ℕ, S N ≤ C * N := by
+  set M := max N₀ 3 with hM
+  refine ⟨max (2 * c) (S (M + 1)), ?_⟩
+  intro N
+  induction N using Nat.strong_induction_on with
+  | _ N ih =>
+    rcases Nat.eq_zero_or_pos N with h0 | hpos
+    · subst h0; simp [hS0]
+    by_cases hle : N ≤ M + 1
+    · -- base: S N ≤ S (M+1) ≤ C ≤ C * N
+      have h1 : S N ≤ S (M + 1) := hmono hle
+      have h2 : S (M + 1) ≤ max (2 * c) (S (M + 1)) := le_max_right _ _
+      have h3 : (1 : ℝ) ≤ N := by exact_mod_cast hpos
+      have h4 : 0 ≤ max (2 * c) (S (M + 1)) := le_trans (hnn _) h2
+      nlinarith
+    · push Not at hle
+      have hN0 : N₀ ≤ N - 1 := by omega
+      have hN4 : 4 ≤ N := by omega
+      have hb := hblock (N - 1) hN0
+      have hsub : N - 1 + 1 = N := by omega
+      rw [hsub] at hb
+      have hsmall : (N - 1) / 4 + 1 < N := by omega
+      have hih := ih ((N - 1) / 4 + 1) hsmall
+      have hcast : ((N - 1 : ℕ) : ℝ) = (N : ℝ) - 1 := by
+        rw [Nat.cast_sub (by omega)]; simp
+      have hdiv : (((N - 1) / 4 + 1 : ℕ) : ℝ) ≤ (N : ℝ) / 4 + 1 := by
+        push_cast
+        have := Nat.cast_div_le (α := ℝ) (m := N - 1) (n := 4)
+        rw [hcast] at this
+        push_cast at this
+        linarith
+      set C := max (2 * c) (S (M + 1)) with hC
+      have hC0 : 0 ≤ C := le_trans (hnn _) (le_max_right _ _)
+      have hC2 : 2 * c ≤ C := le_max_left _ _
+      have hNr : (4 : ℝ) ≤ N := by exact_mod_cast hN4
+      -- S N ≤ S ((N-1)/4+1) + c (N-1) ≤ C ((N-1)/4+1) + c (N-1) ≤ C N
+      have hstep : S N ≤ C * (((N - 1) / 4 + 1 : ℕ) : ℝ) + c * ((N : ℝ) - 1) := by
+        rw [hcast] at hb; linarith
+      have hmul : C * (((N - 1) / 4 + 1 : ℕ) : ℝ) ≤ C * ((N : ℝ) / 4 + 1) :=
+        mul_le_mul_of_nonneg_left hdiv hC0
+      nlinarith
+
+private theorem cb_block (f : ℕ → ℝ) (hf : ∀ n, 0 ≤ f n) (K₀ : ℝ → ℝ) (c K : ℝ) (hc : 0 < c)
+    (hK0 : ∀ u, 0 ≤ K₀ u) (hKc : ∀ u, -2 ≤ u → u ≤ 0 → c ≤ K₀ u)
+    (hX : ∀ X : ℝ, 1 ≤ X → Summable (fun n : ℕ => f n * K₀ (Real.log ((↑n : ℝ) / X)) / (↑n : ℝ)) ∧
+      ∑' n : ℕ, f n * K₀ (Real.log ((↑n : ℝ) / X)) / (↑n : ℝ) ≤ K) (N : ℕ) (hN : 1 ≤ N) :
+    (∑ n ∈ Finset.range (N + 1), f n) - (∑ n ∈ Finset.range (N / 4 + 1), f n) ≤ (K / c) * N := by
+  have hNr : (1 : ℝ) ≤ N := by exact_mod_cast hN
+  have hNpos : (0 : ℝ) < N := by linarith
+  obtain ⟨hs, hle⟩ := hX N hNr
+  have hnn : ∀ n : ℕ, 0 ≤ f n * K₀ (Real.log ((↑n : ℝ) / N)) / (↑n : ℝ) := fun n =>
+    div_nonneg (mul_nonneg (hf n) (hK0 _)) (Nat.cast_nonneg n)
+  rw [← Finset.sum_Ico_eq_sub f (by omega : N / 4 + 1 ≤ N + 1)]
+  have hlog4 : Real.log 4 < 2 := by
+    have : Real.log 4 = 2 * Real.log 2 := by
+      rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]; norm_num
+    rw [this]; linarith [Real.log_two_lt_d9]
+  have hterm : ∀ n ∈ Finset.Ico (N / 4 + 1) (N + 1),
+      f n * (c / N) ≤ f n * K₀ (Real.log ((↑n : ℝ) / N)) / (↑n : ℝ) := by
+    intro n hn
+    rw [Finset.mem_Ico] at hn
+    have hn1 : (1 : ℝ) ≤ n := by exact_mod_cast (by omega : 1 ≤ n)
+    have hnN : (n : ℝ) ≤ N := by exact_mod_cast (by omega : n ≤ N)
+    have h4 : (N : ℝ) < 4 * n := by exact_mod_cast (by omega : N < 4 * n)
+    have hq : 0 < (n : ℝ) / N := div_pos (by linarith) hNpos
+    have hup : Real.log ((n : ℝ) / N) ≤ 0 := Real.log_nonpos hq.le (by rw [div_le_one hNpos]; exact hnN)
+    have hlo : -2 ≤ Real.log ((n : ℝ) / N) := by
+      have h1 : (1 / 4 : ℝ) < (n : ℝ) / N := by rw [lt_div_iff₀ hNpos]; linarith
+      have h2 : Real.log (1 / 4) < Real.log ((n : ℝ) / N) := Real.log_lt_log (by norm_num) h1
+      have h3 : Real.log (1 / 4 : ℝ) = - Real.log 4 := by rw [one_div, Real.log_inv]
+      linarith
+    have hK := hKc _ hlo hup
+    have hfn := hf n
+    rw [mul_div_assoc]
+    apply mul_le_mul_of_nonneg_left _ hfn
+    calc c / N ≤ c / n := div_le_div_of_nonneg_left hc.le (by linarith) hnN
+      _ ≤ K₀ (Real.log ((↑n : ℝ) / N)) / n := div_le_div_of_nonneg_right hK (by linarith)
+  have hsum : ∑ n ∈ Finset.Ico (N / 4 + 1) (N + 1), f n * (c / N) ≤ K :=
+    (Finset.sum_le_sum hterm).trans ((hs.sum_le_tsum _ (fun n _ => hnn n)).trans hle)
+  rw [← Finset.sum_mul] at hsum
+  have hcN : 0 < c / N := div_pos hc hNpos
+  have : ∑ n ∈ Finset.Ico (N / 4 + 1) (N + 1), f n ≤ K / (c / N) := (le_div_iff₀ hcN).2 hsum
+  calc ∑ n ∈ Finset.Ico (N / 4 + 1) (N + 1), f n ≤ K / (c / N) := this
+    _ = K / c * N := by field_simp
+
+-- proof:
+by
+  intro f hf hk
+  obtain ⟨K₀, c, K, hc, hK0, hKc, hX⟩ := hk
+  exact cb_dyadic (fun N => ∑ n ∈ Finset.range N, f n) (by simp)
+    (fun N => Finset.sum_nonneg (fun i _ => hf i))
+    (fun a b hab => Finset.sum_le_sum_of_subset_of_nonneg (Finset.range_mono hab) (fun i _ _ => hf i))
+    (K / c) 1 (fun N hN => cb_block f hf K₀ c K hc hK0 hKc hX N hN)
