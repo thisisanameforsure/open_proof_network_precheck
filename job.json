@@ -1,0 +1,21 @@
+{
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "ea264e8aee7a7256672a40e96325b55cfb042cd86ca35174118253966ab82f0c",
+  "created": "2026-11-19T15:06:24Z",
+  "graph_commit": "203ceeaab03e125fbf57ef0f68c8373e6f414ec9",
+  "id": "01M7T5GDC0QEQ8EQ2TQ4ZS0A09",
+  "node_id": "spec-9ab4bdf6",
+  "proposal": {
+    "head_sha": "203ceeaab03e125fbf57ef0f68c8373e6f414ec9",
+    "pr_number": 1594,
+    "pr_url": "https://github.com/thisisanameforsure/open_proof_network_graph/pull/1594"
+  },
+  "statement_hash": "a6cf690ae431ba0ed93766a319b005aeccd9069e0d3ec88aea43637396b7e409",
+  "target_id": "erdos-257"
+}
