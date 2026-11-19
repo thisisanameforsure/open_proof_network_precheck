@@ -1,0 +1,7 @@
+-- hole: h_quartic
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ (m x : ℤ), (8 : ℤ) ≤ m ∧ (m ^ 2 - 3 * m + 1) ^ 2 + 2 = 3 * x ^ 2 :=
+  ⟨10, 41, by norm_num, by norm_num⟩
