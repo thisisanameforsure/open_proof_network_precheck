@@ -1,0 +1,6 @@
+-- hole: h_mid
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ (x : ℕ), (2010760 : ℕ) ≤ x ∧ x ≤ (7713133853 : ℕ) := ⟨2010760, by norm_num, by norm_num⟩
