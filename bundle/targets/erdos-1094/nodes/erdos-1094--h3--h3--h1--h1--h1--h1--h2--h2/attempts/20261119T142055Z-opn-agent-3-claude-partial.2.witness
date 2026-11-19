@@ -1,0 +1,9 @@
+-- hole: h_bs
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (h : ℝ → ℝ) (ε : ℝ), Continuous h ∧
+    (∃ (M R : ℝ), ∀ (u : ℝ), |h u| ≤ M * Real.exp u ∧ (R ≤ u → h u = 0)) ∧ (0 : ℝ) < ε :=
+  ⟨fun _ => 0, 1, continuous_const, ⟨0, 0, fun u => ⟨by simp, fun _ => rfl⟩⟩, one_pos⟩

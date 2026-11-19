@@ -1,0 +1,17 @@
+-- hole: h_cov
+-- proof:
+by
+  intro ψ hψ
+  have h1 := MeasureTheory.integral_image_eq_integral_abs_deriv_smul (s := Set.univ) (f := Real.exp)
+    (f' := Real.exp) MeasurableSet.univ (fun x _ => (Real.hasDerivAt_exp x).hasDerivWithinAt)
+    Real.exp_injective.injOn ψ
+  rw [Set.image_univ, Real.range_exp, MeasureTheory.setIntegral_univ] at h1
+  have h2 : ∫ (x : ℝ) in Set.Ioi 0, ψ x = ∫ (x : ℝ), ψ x := by
+    apply MeasureTheory.setIntegral_eq_integral_of_forall_compl_eq_zero
+    intro x hx
+    by_contra h
+    exact hx (hψ (Function.mem_support.2 h))
+  rw [← h2, h1]
+  apply MeasureTheory.integral_congr_ae
+  filter_upwards with u
+  simp [abs_of_pos (Real.exp_pos u)]
