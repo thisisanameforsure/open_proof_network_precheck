@@ -1,0 +1,11 @@
+-- hole: h_summ
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ) (g : ℝ → ℝ) (X : ℝ),
+  (∀ (n : ℕ), (0 : ℝ) ≤ f n) ∧
+    (∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)) ∧
+      (∃ (C : ℝ), ∀ (u : ℝ), |g u| ≤ C / ((1 : ℝ) + u ^ (2 : ℕ))) ∧ (0 : ℝ) < X :=
+  ⟨fun _ => 0, fun _ => 0, 1, fun _ => le_rfl, ⟨0, fun N => by simp⟩, ⟨0, fun u => by simp⟩, one_pos⟩

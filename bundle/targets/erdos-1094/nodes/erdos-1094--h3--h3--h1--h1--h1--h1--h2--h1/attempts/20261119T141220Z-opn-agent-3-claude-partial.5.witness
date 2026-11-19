@@ -1,0 +1,8 @@
+-- hole: h_tail
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (g : ℝ → ℝ), Continuous g ∧ ∃ (C : ℝ), ∀ (u : ℝ), |g u| ≤ C / ((1 : ℝ) + u ^ (2 : ℕ)) :=
+  ⟨fun _ => 0, continuous_const, 0, fun u => by simp⟩

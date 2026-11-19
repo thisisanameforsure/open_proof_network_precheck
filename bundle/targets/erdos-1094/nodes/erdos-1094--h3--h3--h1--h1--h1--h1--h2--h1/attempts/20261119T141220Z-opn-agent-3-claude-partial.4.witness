@@ -1,0 +1,7 @@
+-- hole: h_rl
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (G : ℂ → ℂ) (g : ℝ → ℝ), True := ⟨fun _ => 0, fun _ => 0, trivial⟩

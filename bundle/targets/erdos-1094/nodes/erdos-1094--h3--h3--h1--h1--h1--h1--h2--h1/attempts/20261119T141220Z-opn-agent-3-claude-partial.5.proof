@@ -1,0 +1,21 @@
+-- hole: h_tail
+-- proof:
+by
+  intro g hgc hgd
+  obtain ⟨C, hC⟩ := hgd
+  have hint : MeasureTheory.Integrable g := by
+    refine MeasureTheory.Integrable.mono' (integrable_inv_one_add_sq.const_mul C) hgc.aestronglyMeasurable
+      (MeasureTheory.ae_of_all _ (fun u => ?_))
+    rw [Real.norm_eq_abs]
+    simpa [div_eq_mul_inv] using hC u
+  have hmono : Monotone (fun (y : ℝ) => Set.Ioi (-y)) := by
+    intro a b hab
+    exact Set.Ioi_subset_Ioi (neg_le_neg hab)
+  have hU : (⋃ (y : ℝ), Set.Ioi (-y)) = Set.univ := by
+    apply Set.eq_univ_of_forall
+    intro x
+    exact Set.mem_iUnion.2 ⟨-x + 1, by simp⟩
+  have h1 := MeasureTheory.tendsto_setIntegral_of_monotone (f := g) (μ := MeasureTheory.volume)
+    (fun y => measurableSet_Ioi) hmono (by rw [hU]; exact hint.integrableOn)
+  rw [hU, MeasureTheory.setIntegral_univ] at h1
+  exact h1.comp Real.tendsto_log_atTop

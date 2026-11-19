@@ -1,0 +1,19 @@
+-- hole: h_cheb
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ) (A : ℝ),
+  (∀ (n : ℕ), (0 : ℝ) ≤ f n) ∧
+    (∀ (s : ℂ), (1 : ℝ) < s.re → LSeriesSummable (fun (n : ℕ) => (↑(f n) : ℂ)) s) ∧
+      (∃ (G : ℂ → ℂ),
+          ContinuousOn G {s : ℂ | (1 : ℝ) ≤ s.re} ∧
+            ∀ (s : ℂ), (1 : ℝ) < s.re → G s = LSeries (fun (n : ℕ) => (↑(f n) : ℂ)) s - (↑A : ℂ) / (s - (1 : ℂ))) := by
+  refine ⟨fun _ => 0, 0, fun _ => le_rfl, ?_, ?_⟩
+  · intro s _
+    simp only [Complex.ofReal_zero]
+    exact LSeriesSummable_zero
+  · refine ⟨fun _ => 0, continuousOn_const, fun s _ => ?_⟩
+    simp only [Complex.ofReal_zero, zero_div, sub_zero]
+    exact (congrFun LSeries_zero s).symm

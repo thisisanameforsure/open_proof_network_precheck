@@ -1,0 +1,20 @@
+-- hole: h_rl
+-- proof:
+by
+  intro G g
+  set Φ : ℝ → ℂ := fun ξ => FourierTransform.fourier (fun (u : ℝ) => (↑(g u) : ℂ)) ξ *
+    G (1 - 2 * ↑Real.pi * Complex.I * ↑ξ) with hΦ
+  have hRL := Real.tendsto_integral_exp_smul_cocompact Φ
+  have hle : Filter.atTop ≤ Filter.cocompact ℝ := atTop_le_cocompact
+  have h2 := hRL.comp (Real.tendsto_log_atTop.mono_right hle)
+  refine h2.congr (fun X => ?_)
+  simp only [Function.comp_apply]
+  apply MeasureTheory.integral_congr_ae
+  filter_upwards with ξ
+  rw [Circle.smul_def, Real.fourierChar_apply, hΦ]
+  simp only
+  have : (↑(2 * Real.pi * -(ξ * Real.log X)) : ℂ) * Complex.I =
+      -(2 * ↑Real.pi * Complex.I * ↑(Real.log X) * ↑ξ) := by push_cast; ring
+  rw [this]
+  ring
+

@@ -1,0 +1,29 @@
+-- hole: h_id
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ) (A : ℝ) (G : ℂ → ℂ) (g : ℝ → ℝ) (X : ℝ),
+  (∀ (n : ℕ), (0 : ℝ) ≤ f n) ∧
+    (∀ (s : ℂ), (1 : ℝ) < s.re → LSeriesSummable (fun (n : ℕ) => (↑(f n) : ℂ)) s) ∧
+      ContinuousOn G {s : ℂ | (1 : ℝ) ≤ s.re} ∧
+        (∀ (s : ℂ), (1 : ℝ) < s.re → G s = LSeries (fun (n : ℕ) => (↑(f n) : ℂ)) s - (↑A : ℂ) / (s - (1 : ℂ))) ∧
+          (∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)) ∧
+            Continuous g ∧
+              (∃ (C : ℝ), ∀ (u : ℝ), |g u| ≤ C / ((1 : ℝ) + u ^ (2 : ℕ))) ∧
+                HasCompactSupport (FourierTransform.fourier fun (u : ℝ) => (↑(g u) : ℂ)) ∧ (0 : ℝ) < X := by
+  refine ⟨fun _ => 0, 0, fun _ => 0, fun _ => 0, 1, fun _ => le_rfl, ?_, continuousOn_const, ?_,
+    ⟨0, fun N => by simp⟩, continuous_const, ⟨0, fun u => by simp⟩, ?_, one_pos⟩
+  · intro s _
+    simp only [Complex.ofReal_zero]
+    exact LSeriesSummable_zero
+  · intro s _
+    simp only [Complex.ofReal_zero, zero_div, sub_zero]
+    exact (congrFun LSeries_zero s).symm
+  · simp only [Complex.ofReal_zero]
+    have h0 : (FourierTransform.fourier (fun (_ : ℝ) => (0 : ℂ))) = 0 := by
+      funext w
+      simp [Real.fourier_real_eq]
+    rw [h0]
+    exact HasCompactSupport.zero
