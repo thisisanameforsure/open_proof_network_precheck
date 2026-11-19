@@ -1,0 +1,9 @@
+-- hole: h_approx
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (ψ : ℝ → ℝ) (ε : ℝ),
+  ContDiff ℝ (2 : WithTop ℕ∞) ψ ∧ HasCompactSupport ψ ∧ Function.support ψ ⊆ Set.Ioi (0 : ℝ) ∧ (0 : ℝ) < ε :=
+  ⟨fun _ => 0, 1, contDiff_const, HasCompactSupport.zero, by simp, one_pos⟩
