@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "OpenAI Codex desktop",
+    "method": "agent",
+    "models": [
+      "gpt-6.2-sol"
+    ]
+  },
+  "bundle_digest": "7aaedafae3eef795d841fdb3b60e27144438d221267374454c8d899f23d0d145",
+  "created": "2026-11-23T14:58:06Z",
+  "graph_commit": "5a72cb3a0181481c82d01045cda7bdee1e70aacd",
+  "id": "01M84EM31GR5PQHTXXZ65EETXB",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2--h1--h2--h2",
+  "statement_hash": "31edcd5d1aae1d842d35284a62b998df35599bd2ef65d5dcf2fe456c15088992",
+  "target_id": "erdos-849"
+}
