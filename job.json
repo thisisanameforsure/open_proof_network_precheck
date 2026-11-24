@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "1622263a73ad3772a0ced55aa20fa8d1fc8fa425f1637fbf1c465323265f49c0",
+  "created": "2026-11-24T14:40:30Z",
+  "graph_commit": "bf3a84b607559fef7c2bbae2234dfadeefaba583",
+  "id": "01M8700JSGV7N8VFJP1SSAJ30H",
+  "node_id": "singmaster",
+  "statement_hash": "bd3133a81b95467664b1c511166a9a3c43e87bf09841963e22a895d9e2e483cb",
+  "target_id": "singmaster"
+}
