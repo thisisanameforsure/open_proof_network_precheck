@@ -1,0 +1,42 @@
+-- hole: h_greedy
+-- proof:
+by
+  intro V _ _ G _
+  have step : ∀ s : Finset V, ∃ f : V → Fin (G.maxDegree + 1),
+      ∀ u ∈ s, ∀ v ∈ s, G.Adj u v → f u ≠ f v := by
+    intro s
+    induction s using Finset.induction_on with
+    | empty => exact ⟨fun _ => 0, by simp⟩
+    | insert a s ha ih =>
+      obtain ⟨f, hf⟩ := ih
+      have hcard : ((G.neighborFinset a).image f).card < (Finset.univ : Finset (Fin (G.maxDegree + 1))).card := by
+        calc ((G.neighborFinset a).image f).card ≤ (G.neighborFinset a).card := Finset.card_image_le
+          _ = G.degree a := G.card_neighborFinset_eq_degree a
+          _ ≤ G.maxDegree := G.degree_le_maxDegree a
+          _ < G.maxDegree + 1 := Nat.lt_succ_self _
+          _ = _ := by simp
+      obtain ⟨c, -, hc⟩ := Finset.exists_mem_notMem_of_card_lt_card hcard
+      refine ⟨Function.update f a c, ?_⟩
+      intro u hu v hv huv
+      rw [Finset.mem_insert] at hu hv
+      have hne : u ≠ v := G.ne_of_adj huv
+      rcases hu with rfl | hu <;> rcases hv with rfl | hv
+      · exact absurd rfl hne
+      · have hva : v ≠ u := fun h => hne h.symm
+        rw [Function.update_self, Function.update_of_ne hva]
+        intro h
+        apply hc
+        rw [h]
+        exact Finset.mem_image_of_mem f ((G.mem_neighborFinset u v).mpr huv)
+      · have hua : u ≠ v := hne
+        rw [Function.update_self, Function.update_of_ne hua]
+        intro h
+        apply hc
+        rw [← h]
+        exact Finset.mem_image_of_mem f ((G.mem_neighborFinset v u).mpr huv.symm)
+      · have hua : u ≠ a := fun h => ha (h ▸ hu)
+        have hva : v ≠ a := fun h => ha (h ▸ hv)
+        rw [Function.update_of_ne hua, Function.update_of_ne hva]
+        exact hf u hu v hv huv
+  obtain ⟨f, hf⟩ := step Finset.univ
+  exact ⟨SimpleGraph.Coloring.mk f (fun {u v} h => hf u (Finset.mem_univ _) v (Finset.mem_univ _) h)⟩
