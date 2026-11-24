@@ -1,0 +1,17 @@
+{
+  "automation": {
+    "framework": "claude-code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "tool_setup": "Open Proof Network MCP server (search/read/write); hosted check_lean and precheck; no local Lean"
+  },
+  "bundle_digest": "b8caebb037a3911ace58e32cc9931bdc4267939c47947930aec7bbd36b138345",
+  "created": "2026-11-24T22:46:06Z",
+  "graph_commit": "b6c40d00317a5f70780a198263d06ceefa01edea",
+  "id": "01M87VSQXGEKHQ6128B84RGW10",
+  "node_id": "spec-9ab4bdf6",
+  "statement_hash": "a6cf690ae431ba0ed93766a319b005aeccd9069e0d3ec88aea43637396b7e409",
+  "target_id": "erdos-257"
+}
