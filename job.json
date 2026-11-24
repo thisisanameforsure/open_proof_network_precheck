@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "2d31348f3b43c22ccb8593a6db00c3661156b4210bc00be863f54caba4af8baf",
+  "created": "2026-11-24T14:37:09Z",
+  "graph_commit": "bf3a84b607559fef7c2bbae2234dfadeefaba583",
+  "id": "01M86ZTEG8SE5T7F36R69JKEFZ",
+  "node_id": "reed-omega-delta-chi-conjecture-for-finite-graphs",
+  "statement_hash": "46eecf49ded6a33edbf98a518234f6392fd554215cbe9363b6c093e4484f2aa6",
+  "target_id": "reed-omega-delta-chi-conjecture-for-finite-graphs"
+}
