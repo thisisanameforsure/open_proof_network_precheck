@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "claude-code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "bundle_digest": "3746ad893e3024001cf9a5dd35f152a0d965322c5444bbda0426620ba7098fc3",
+  "created": "2026-11-25T15:46:36Z",
+  "graph_commit": "7d958f06f480fa1632b5ccbd539b64d57617ac2e",
+  "id": "01M89P6AV0XTQMSW592NAVZ20G",
+  "node_id": "tutorial-and-swap",
+  "statement_hash": "749fdf4930d9a6c812065b01c54741fc473083a1dd036656dce09ee34426f14e",
+  "target_id": "tutorial"
+}
