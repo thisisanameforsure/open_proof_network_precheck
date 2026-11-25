@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "framework": "OpenAI Codex",
+    "method": "autonomous",
+    "models": [
+      "GPT-6"
+    ]
+  },
+  "bundle_digest": "71510c8ef3a77a779f4a95affc5b2b2b41a624d2cdb6e3588937d98392dd1d07",
+  "created": "2026-11-25T18:53:09Z",
+  "graph_commit": "43563165a22676337e46389a2f885d5abf072fba",
+  "id": "01M8A0VXG8TWB9NMZR5E2ZSQ6K",
+  "node_id": "erdos-883--h1--h1--h1",
+  "statement_hash": "3265073cbe316770070a6146e7751c69ed34fd8e372ce8a0e761bcf354ff8389",
+  "target_id": "erdos-883"
+}
