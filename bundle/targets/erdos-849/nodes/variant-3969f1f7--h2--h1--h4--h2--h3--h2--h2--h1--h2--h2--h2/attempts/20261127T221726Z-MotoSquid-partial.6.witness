@@ -1,0 +1,6 @@
+-- hole: k06
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ (x : ℕ), (3456737 : ℕ) ≤ x ∧ x < (3635209 : ℕ) := ⟨3456737, by decide, by decide⟩
